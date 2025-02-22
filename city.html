@@ -22,6 +22,10 @@
 
     <p id="result"></p>
 
+    <div>
+        <img id="petImage" src="Ocelot.jpeg" alt="Ocelot" width="150" height="150" onclick="updatePic()">
+    </div>
+
     <script>
         let oops = 0, found = 0;
 
@@ -39,8 +43,27 @@
 
             document.getElementById('result').innerHTML = `Correct: ${found} | Wrong: ${oops}`;
         }
+    </script>
 
+    <script>
+        let usePic = 1;
 
+        function updatePic() {
+            switch (usePic) {
+                case 1:
+                    document.getElementById('petImage').src = "Umbrellabird.jpeg";
+                    usePic = 2;
+                    break;
+                case 2:
+                    document.getElementById('petImage').src = "Aardvark.jpeg";
+                    usePic = 3;
+                    break;
+                case 3:
+                    document.getElementById('petImage').src = "Ocelot.jpeg";
+                    usePic = 1;
+                    break;
+            }
+        }
     </script>
 
 </body>
