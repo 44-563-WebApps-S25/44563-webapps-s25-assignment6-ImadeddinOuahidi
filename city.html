@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>City game</title>
+</head>
+
+<body>
+
+    <h2>City game by Imadeddin Ouahidi</h2>
+
+    <form>
+        <label for="secretCity">Where in the world </label>
+        <input type="password" id="secretCity" value="San Diego"> <br>
+
+        <label for="guessCity">Guess the city </label>
+        <input type="text" id="guessCity" autofocus> <br>
+
+        <input type="button" onclick="checkCity()" value="Check the guess">
+    </form>
+
+
+    <p id="result"></p>
+
+    <script>
+        let oops = 0, found = 0;
+
+        function checkCity() {
+            let secretCity = document.getElementById("secretCity").value
+            let guessCity = document.getElementById("guessCity").value
+
+            if (secretCity == guessCity) {
+                found++;
+                alert("GotCha")
+            } else {
+                oops++;
+                alert("Awe")
+            }
+
+            document.getElementById('result').innerHTML = `Correct: ${found} | Wrong: ${oops}`;
+        }
+
+
+    </script>
+
+</body>
+
+</html>
