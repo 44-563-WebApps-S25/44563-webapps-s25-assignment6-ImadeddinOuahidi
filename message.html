@@ -25,12 +25,26 @@
 
     <p id="result"> </p>
 
+    <form>
+        <input type="radio" id="times" name="operation" value="times" checked onclick="chooseOp()">
+        <label for="times">Product</label></br>
+
+        <input type="radio" id="add" name="operation" value="add" onclick="chooseOp()">
+        <label for="add">Sum</label></br>
+
+        <input type="radio" id="mod" name="operation" value="mod" onclick="chooseOp()">
+        <label for="mod">Mod</label></br>
+
+    </form>
+
+    <p id="operationResult"></p>
+
     <script>
 
         function amounts() {
             let price = parseFloat(document.getElementById('basicPrice').value);
             let breakAt = parseInt(document.getElementById('breakAt').value);
-            let discount = parseFloat(document.getElementById('discount').value)/100;
+            let discount = parseFloat(document.getElementById('discount').value) / 100;
 
             let myResults = "";
             for (let size = breakAt - 3; size <= breakAt + 3; size++) {
@@ -38,14 +52,44 @@
                 if (size < breakAt) {
                     cost = size * price;
                 } else {
-                    cost = 9 *price +((size-9) * (price - (price * discount)));
+                    cost = 9 * price + ((size - 9) * (price - (price * discount)));
                 }
-                myResults += "size " + size + " is " + cost.toFixed(1) + "; " ;
+                myResults += "size " + size + " is " + cost.toFixed(1) + "; ";
             }
 
             document.getElementById('result').innerHTML = "Totals are: " + myResults;
         }
 
+    </script>
+
+    <script>
+        function chooseOp() {
+            let price = parseFloat(document.getElementById('basicPrice').value);
+            let breakAt = parseInt(document.getElementById('breakAt').value);
+            let operation;
+
+            let radios = document.getElementsByName("operation");
+            for (let radio of radios) {
+                if (radio.checked) {
+                    operation = radio.value;
+                }
+            }
+
+            let result;
+            switch (operation) {
+                case "times":
+                    result = price + " times " + breakAt + " is " + price * breakAt + " ; or more precisely for the computation " + price + " * " + breakAt + " is " + price * breakAt;
+                    break;
+                case "add":
+                    result = price + " plus " + breakAt + " is " + (price + breakAt) + " ; or more precisely for the computation " + price + " + " + breakAt + " is " + (price + breakAt);
+                    break;
+                case "mod":
+                    result = price + " mod " + breakAt + " is " + price % breakAt + " ; or more precisely for the computation " + price + " % " + breakAt + " is " + price % breakAt;
+                    break;
+            }
+
+            document.getElementById('operationResult').innerHTML = result;
+        }
     </script>
 
 </body>
