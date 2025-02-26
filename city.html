@@ -3,45 +3,77 @@
 
 <head>
     <title>City game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="container mt-5">
 
-    <h2>City game by Imadeddin Ouahidi</h2>
+    <h2 class="text-center text-primary">City game by Imadeddin Ouahidi</h2>
 
-    <form>
-        <label for="secretCity">Where in the world </label>
-        <input type="password" id="secretCity" value="San Diego"> <br>
+    <div class="card shadow p-4 mb-4">
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="secretCity" class="form-label">Where in the world:</label>
+                    <input type="password" id="secretCity" value="San Diego" class="form-control">
+                </div>
 
-        <label for="guessCity">Guess the city </label>
-        <input type="text" id="guessCity" autofocus> <br>
+                <div class="mb-3">
+                    <label for="guessCity" class="form-label">Guess the city:</label>
+                    <input type="text" id="guessCity" class="form-control" autofocus>
+                </div>
 
-        <input type="button" onclick="checkCity()" value="Check the guess">
-    </form>
+                <button type="button" id="checkButton" class="btn btn-primary w-100" onclick="checkCity()">Check the
+                    Guess</button>
+            </form>
+        </div>
+    </div>
 
+    <div id="resultContainer" class="alert alert-info">
+        <h4 class="alert-heading">Game Status</h4>
+        <p id="result"><b>Correct:</b> 0 | <b>Wrong:</b> 0</p>
+    </div>
 
-    <p id="result"></p>
-
-    <div>
-        <img id="petImage" src="Ocelot.jpeg" alt="Ocelot" width="150" height="150" onclick="updatePic()">
+    <div class="text-center mt-3">
+        <img id="petImage" src="Ocelot.jpeg" alt="Ocelot" width="150" height="150" class="rounded shadow img-thumbnail"
+            onclick="updatePic()">
+        <p class="mt-2"><i>Click the image to change</i></p>
     </div>
 
     <script>
         let oops = 0, found = 0;
 
         function checkCity() {
-            let secretCity = document.getElementById("secretCity").value;
-            let guessCity = document.getElementById("guessCity").value;
+            let secretCity = document.getElementById("secretCity").value.trim().toLowerCase();
+            let guessCity = document.getElementById("guessCity").value.trim().toLowerCase();
+            let resultDiv = document.getElementById('result');
+            let checkButton = document.getElementById('checkButton');
 
-            if (secretCity == guessCity) {
+            if (guessCity === secretCity) {
                 found++;
-                alert("GotCha")
+                alert("GotCha!");
             } else {
                 oops++;
-                alert("Awe")
+                alert("Awe!");
             }
 
-            document.getElementById('result').innerHTML = "Correct: " + found + " | Wrong: " + oops;
+            resultDiv.innerHTML = "<b>Correct:</b>" + found + " | <b>Wrong:</b>" +oops ;
+
+            if (oops > 2 * found) {
+                alert("Sorry, too many wrong guesses.");
+                checkButton.disabled = true;
+                checkButton.classList.add("btn-danger");
+            }
         }
     </script>
 
@@ -65,7 +97,6 @@
             }
         }
     </script>
-
 </body>
 
 </html>
