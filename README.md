@@ -3,6 +3,6 @@
 Introduction to Java Script and DOM
 
 Hosted at:
-- **For the City page:** (city.html)[https://44-563-webapps-s25.github.io/44563-webapps-s25-assignment6-ImadeddinOuahidi/city]
-- **For the Message page:** (message.html)[https://44-563-webapps-s25.github.io/44563-webapps-s25-assignment6-ImadeddinOuahidi/message]
-- **For the Dinner page:** (dinner.html)[https://44-563-webapps-s25.github.io/44563-webapps-s25-assignment6-ImadeddinOuahidi/dinner]
+- **For the City page:** [city.html](https://44-563-webapps-s25.github.io/44563-webapps-s25-assignment6-ImadeddinOuahidi/city)
+- **For the Message page:** [message.html](https://44-563-webapps-s25.github.io/44563-webapps-s25-assignment6-ImadeddinOuahidi/message)
+- **For the Dinner page:** [dinner.html](https://44-563-webapps-s25.github.io/44563-webapps-s25-assignment6-ImadeddinOuahidi/dinner)
